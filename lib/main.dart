@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kbs_css/view/login_page.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:kbs_css/view/admin/admin_home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,8 +9,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: LoginPage(),
+    return GetMaterialApp(
+      home: AdminHomePage(),
     );
   }
 }

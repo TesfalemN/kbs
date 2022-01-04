@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kbs_css/Keys.dart';
-import 'package:kbs_css/view/admin/admin_home_page.dart';
-import 'package:kbs_css/view/home_page';
-import 'package:kbs_css/view/user/user_home_page.dart';
+
+import '../Keys.dart';
+import 'admin/admin_home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -46,7 +46,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     color: Keys.primaryColor,
                     onPressed: () {
-                      Get.to((UserHomePage()));
+                      Get.to((AdminHomePage()));
                     },
                     height: 40,
                     minWidth: 100,

@@ -15,4 +15,39 @@ class AdminHomeController extends GetxController {
     _homePageWidget = value;
     update();
   }
+
+  bool _courseDrawer = false;
+  bool get courseDrawer => _courseDrawer;
+  set courseDrawer(bool value) {
+    _courseDrawer = value;
+    update();
+  }
+
+  bool _classesDrawer = false;
+  bool get classesDrawer => _classesDrawer;
+  set classesDrawer(bool value) {
+    _classesDrawer = value;
+    update();
+  }
+
+  bool _departmentDrawer = false;
+  bool get departmentDrawer => _departmentDrawer;
+  set departmentDrawer(bool value) {
+    _departmentDrawer = value;
+    update();
+  }
+
+  bool _instructorDrawer = false;
+  bool get instructorDrawer => _instructorDrawer;
+  set instructorDrawer(bool value) {
+    _instructorDrawer = value;
+    update();
+  }
+
+  bool _studentDrawer = false;
+  bool get studentDrawer => _studentDrawer;
+  set studentDrawer(bool value) {
+    _studentDrawer = value;
+    update();
+  }
 }
