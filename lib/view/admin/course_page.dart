@@ -10,11 +10,11 @@ import 'package:kbs_css/controller/admin/course_page_controller.dart';
 import 'package:kbs_css/view/admin/add_course_page.dart';
 
 class CoursesPage extends StatelessWidget {
+  final Stream<QuerySnapshot> coursesStream =
+      FirebaseFirestore.instance.collection(Keys.courses).snapshots();
+
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> coursesStream =
-        FirebaseFirestore.instance.collection(Keys.courses).snapshots();
-
     Get.put(CoursePageController());
     return GetBuilder<CoursePageController>(
       builder: (controller) => Container(

@@ -110,7 +110,7 @@ class AddCoursePage extends StatelessWidget {
                             height: 40,
                           ),
                           controller.isLoading
-                              ? CupertinoActivityIndicator(
+                              ? const CupertinoActivityIndicator(
                                   radius: 15,
                                 )
                               : MaterialButton(
@@ -140,8 +140,6 @@ class AddCoursePage extends StatelessWidget {
                                         'Course Added Successfully',
                                       );
                                       controller.isLoading = false;
-                                    } else {
-                                      print('onFieldSubmitted: error');
                                     }
                                   },
                                   child: Row(
