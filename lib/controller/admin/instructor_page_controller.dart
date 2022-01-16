@@ -57,4 +57,10 @@ class InstructorController extends GetxController {
     }
     return false;
   }
+
+  List<Map<String, String>> prefix = [
+    {'value': 'PHD', 'title': 'PHD'},
+    {'value': 'Assoc Prof.', 'title': 'Assoc Prof.'},
+    {'value': 'Asst. Prof.', 'title': 'Asst. Prof.'},
+  ];
 }

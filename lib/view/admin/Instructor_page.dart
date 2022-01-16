@@ -137,7 +137,7 @@ class InstructorPage extends StatelessWidget {
                                   ),
                                   onPressed: () {},
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 IconButton(

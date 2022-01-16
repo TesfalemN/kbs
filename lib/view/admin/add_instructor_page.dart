@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kbs_css/Keys.dart';
 import 'package:kbs_css/controller/admin/instructor_page_controller.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:smart_select/smart_select.dart';
 
 class AddInstructorPage extends StatelessWidget {
   final Stream<QuerySnapshot> coursesStream =
@@ -66,13 +67,55 @@ class AddInstructorPage extends StatelessWidget {
                     const SizedBox(
                       height: 25,
                     ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        isDense: true,
-                        labelText: 'Instructor Prefix',
-                        border: OutlineInputBorder(),
+                    InkWell(
+                      onTap: () {
+                        showDialog<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            int selectedRadio = 0;
+                            return AlertDialog(
+                              content: StatefulBuilder(
+                                builder: (BuildContext context,
+                                    StateSetter setState) {
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children:
+                                        List<Widget>.generate(4, (int index) {
+                                      return Radio<int>(
+                                        value: index,
+                                        groupValue: selectedRadio,
+                                        onChanged: (value) {},
+                                      );
+                                    }),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: TextFormField(
+                        controller:
+                            controller.instructorIdTextEditingController,
+                        readOnly: true,
+                        decoration: const InputDecoration(
+                          isDense: true,
+                          labelText: 'Instructor Prefix',
+                          border: OutlineInputBorder(),
+                        ),
+                        validator: (value) {
+                          return value == null
+                              ? 'Enter Instructor Prefix'
+                              : (2 <= value.length || value.length >= 10)
+                                  ? null
+                                  : 'Enter Instructor Prefix';
+                        },
+                        onChanged: (value) {
+                          if (controller.isFormValidated) {
+                            controller.formKey.currentState!.validate();
+                          }
+                        },
                       ),
-                      readOnly: true,
                     ),
                     const SizedBox(
                       height: 25,
