@@ -11,6 +11,8 @@ class ClassController extends GetxController {
       TextEditingController();
   TextEditingController classRoomNameTextEditingController =
       TextEditingController();
+  TextEditingController blockNumberTextEditingController =
+      TextEditingController();
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -25,6 +27,7 @@ class ClassController extends GetxController {
           Keys.classes,
           (ClassRoom()
                 ..classRoomCode = classRoomCodeTextEditingController.text
+                ..blockNumber = blockNumberTextEditingController.text
                 ..classRoomName = classRoomNameTextEditingController.text)
               .toJson());
     } catch (ex) {

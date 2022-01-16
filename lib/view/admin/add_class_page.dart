@@ -41,14 +41,14 @@ class AddClassPage extends StatelessWidget {
                       controller: controller.classRoomCodeTextEditingController,
                       validator: (value) {
                         return value == null
-                            ? 'Enter Class Room Code'
+                            ? 'Enter Class Room Number'
                             : (2 <= value.length || value.length >= 10)
                                 ? null
-                                : 'Enter Class Room Code';
+                                : 'Enter Class Room Number';
                       },
                       decoration: const InputDecoration(
                         isDense: true,
-                        labelText: 'Class Room Code',
+                        labelText: 'Class Room Number',
                         border: OutlineInputBorder(),
                       ),
                       onChanged: (value) {
@@ -72,6 +72,29 @@ class AddClassPage extends StatelessWidget {
                       decoration: const InputDecoration(
                         isDense: true,
                         labelText: 'Class Room Name',
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        if (controller.isFormValidated) {
+                          controller.formKey.currentState!.validate();
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    TextFormField(
+                      controller: controller.blockNumberTextEditingController,
+                      validator: (value) {
+                        return value == null
+                            ? 'Enter Block Number'
+                            : (2 <= value.length || value.length >= 10)
+                                ? null
+                                : 'Enter Block Number';
+                      },
+                      decoration: const InputDecoration(
+                        isDense: true,
+                        labelText: 'Block Number',
                         border: OutlineInputBorder(),
                       ),
                       onChanged: (value) {

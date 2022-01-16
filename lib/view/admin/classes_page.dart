@@ -108,11 +108,15 @@ class ClassRoomPage extends StatelessWidget {
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: Text('Class Room Code'),
+                        label: Text('Class Room Number'),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
                         label: Text('Class Room Name'),
+                        size: ColumnSize.L,
+                      ),
+                      DataColumn2(
+                        label: Text('Block Number'),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
@@ -125,6 +129,7 @@ class ClassRoomPage extends StatelessWidget {
                       0,
                       (index) => DataRow(
                         cells: [
+                          DataCell(Container()),
                           DataCell(Container()),
                           DataCell(Container()),
                           DataCell(Container()),
@@ -159,11 +164,15 @@ class ClassRoomPage extends StatelessWidget {
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: Text('Class Room Code'),
+                        label: Text('Class Room Number'),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
                         label: Text('Class Room Name'),
+                        size: ColumnSize.L,
+                      ),
+                      DataColumn2(
+                        label: Text('Block Number'),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
@@ -176,6 +185,7 @@ class ClassRoomPage extends StatelessWidget {
                       0,
                       (index) => DataRow(
                         cells: [
+                          DataCell(Container()),
                           DataCell(Container()),
                           DataCell(Container()),
                           DataCell(Container()),
@@ -221,11 +231,15 @@ class ClassRoomPage extends StatelessWidget {
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: Text('Class Room Code'),
+                        label: Text('Class Room Number'),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
                         label: Text('Class Room Name'),
+                        size: ColumnSize.L,
+                      ),
+                      DataColumn2(
+                        label: Text('Block Number'),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
@@ -248,6 +262,10 @@ class ClassRoomPage extends StatelessWidget {
                           DataCell(
                             Text(
                                 '${snapshot.data?.docs[index]['classRoomName'] ?? ''}'),
+                          ),
+                          DataCell(
+                            Text(
+                                '${snapshot.data?.docs[index]['blockNumber'] ?? ''}'),
                           ),
                           DataCell(
                             Row(
