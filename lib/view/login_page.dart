@@ -37,11 +37,11 @@ class LoginPage extends StatelessWidget {
                               ? 'Enter User Id'
                               : (2 <= value.length || value.length >= 10)
                                   ? null
-                                  : 'Enter User Id';
+                                  : 'Enter Employee Id';
                         },
                         decoration: const InputDecoration(
                           isDense: true,
-                          labelText: 'User Id',
+                          labelText: 'Enter Your ID here',
                           border: OutlineInputBorder(),
                         ),
                         onChanged: (value) {
@@ -58,14 +58,14 @@ class LoginPage extends StatelessWidget {
                             controller.userPasswordTextEditingController,
                         validator: (value) {
                           return value == null
-                              ? 'Enter User Password'
+                              ? 'Enter your Password'
                               : (2 <= value.length || value.length >= 10)
                                   ? null
-                                  : 'Enter User Password';
+                                  : 'Enter your Password';
                         },
                         decoration: const InputDecoration(
                           isDense: true,
-                          labelText: 'User Id',
+                          labelText: 'Enter Password here',
                           border: OutlineInputBorder(),
                         ),
                         onChanged: (value) {

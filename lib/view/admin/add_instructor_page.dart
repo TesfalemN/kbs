@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kbs_css/Keys.dart';
 import 'package:kbs_css/controller/admin/instructor_page_controller.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:smart_select/smart_select.dart';
 
 class AddInstructorPage extends StatelessWidget {
   final Stream<QuerySnapshot> coursesStream =
@@ -68,35 +67,26 @@ class AddInstructorPage extends StatelessWidget {
                       height: 25,
                     ),
                     InkWell(
-                      onTap: () {
-                        showDialog<void>(
-                          context: context,
-                          builder: (BuildContext context) {
-                            int selectedRadio = 0;
-                            return AlertDialog(
-                              content: StatefulBuilder(
-                                builder: (BuildContext context,
-                                    StateSetter setState) {
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children:
-                                        List<Widget>.generate(4, (int index) {
-                                      return Radio<int>(
-                                        value: index,
-                                        groupValue: selectedRadio,
-                                        onChanged: (value) {},
-                                      );
-                                    }),
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        );
-                      },
                       child: TextFormField(
                         controller:
                             controller.instructorIdTextEditingController,
+                        onTap: () {
+                          showDialog<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                int selectedRadio = 0;
+                                return AlertDialog(
+                                  content: StatefulBuilder(
+                                    builder: (BuildContext context,
+                                        StateSetter setState) {
+                                      return Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: prefixList(controller));
+                                    },
+                                  ),
+                                );
+                              });
+                        },
                         readOnly: true,
                         decoration: const InputDecoration(
                           isDense: true,
@@ -164,6 +154,56 @@ class AddInstructorPage extends StatelessWidget {
                           controller.formKey.currentState!.validate();
                         }
                       },
+                    ),
+                    Center(
+                      child: PopupMenuButton(
+                        child: const Text("Radio PopupMenuButton"),
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Radio(
+                                  activeColor: Colors.pink,
+                                  groupValue: 1,
+                                  onChanged: (i) {},
+                                  value: 1,
+                                ),
+                                const Text("Android"),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Radio(
+                                  groupValue: 1,
+                                  onChanged: (i) {},
+                                  value: 1,
+                                ),
+                                const Text("Flutter"),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Radio(
+                                  groupValue: 1,
+                                  onChanged: (i) {},
+                                  value: 1,
+                                ),
+                                const Text("Dart"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       height: 25,
@@ -264,5 +304,18 @@ class AddInstructorPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> prefixList(InstructorController controller) {
+    List<Widget> buttons = <Widget>[];
+    for (var element in controller.prefix) {
+      buttons.add(Radio<int>(
+        value: controller.prefix.indexOf(element),
+        groupValue: 100,
+        onChanged: (value) {},
+      ));
+    }
+
+    return buttons;
   }
 }

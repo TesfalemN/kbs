@@ -54,7 +54,7 @@ class AddStudentPage extends StatelessWidget {
                   const TextField(
                     decoration: InputDecoration(
                       isDense: true,
-                      labelText: 'Student Department',
+                      labelText: 'Department',
                       border: OutlineInputBorder(),
                     ),
                   ),

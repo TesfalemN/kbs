@@ -102,7 +102,7 @@ class StudentPage extends StatelessWidget {
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: Text('Student Department'),
+                    label: Text('Department'),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
