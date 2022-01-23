@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kbs_css/Keys.dart';
 import 'package:kbs_css/controller/admin/course_page_controller.dart';
 
 class AddCoursePage extends StatelessWidget {
@@ -51,6 +52,12 @@ class AddCoursePage extends StatelessWidget {
                               isDense: true,
                               labelText: 'Course Code',
                               border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.integration_instructions_outlined,
+                              ),
+                              labelStyle: TextStyle(
+                                fontSize: 14,
+                              ),
                             ),
                             onChanged: (value) {
                               if (controller.isFormValidated) {
@@ -75,6 +82,12 @@ class AddCoursePage extends StatelessWidget {
                               isDense: true,
                               labelText: 'Course Name',
                               border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.assignment_outlined,
+                              ),
+                              labelStyle: TextStyle(
+                                fontSize: 14,
+                              ),
                             ),
                             onChanged: (value) {
                               if (controller.isFormValidated) {
@@ -99,6 +112,12 @@ class AddCoursePage extends StatelessWidget {
                               isDense: true,
                               labelText: 'Course Credit',
                               border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.history_toggle_off_outlined,
+                              ),
+                              labelStyle: TextStyle(
+                                fontSize: 14,
+                              ),
                             ),
                             onChanged: (value) {
                               if (controller.isFormValidated) {
@@ -114,7 +133,7 @@ class AddCoursePage extends StatelessWidget {
                                   radius: 15,
                                 )
                               : MaterialButton(
-                                  color: Colors.teal,
+                                  color: Keys.primaryColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                       4,
@@ -153,7 +172,7 @@ class AddCoursePage extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                       SizedBox(
-                                        width: 5,
+                                        width: 10,
                                       ),
                                       Text(
                                         'Add Course',

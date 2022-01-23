@@ -20,6 +20,20 @@ class LoginController extends GetxController {
     update();
   }
 
+  bool _isPasswordShow = false;
+  bool get isPasswordShow => _isPasswordShow;
+  set isPasswordShow(bool value) {
+    _isPasswordShow = value;
+    update();
+  }
+
+  bool _isUserIdOrPasswordIncorrect = false;
+  bool get isUserIdOrPasswordIncorrect => _isUserIdOrPasswordIncorrect;
+  set isUserIdOrPasswordIncorrect(bool value) {
+    _isUserIdOrPasswordIncorrect = value;
+    update();
+  }
+
   TextEditingController userIdTextEditingController = TextEditingController();
   TextEditingController userPasswordTextEditingController =
       TextEditingController();
@@ -40,6 +54,8 @@ class LoginController extends GetxController {
         } else {
           Get.to(UserHomePage());
         }
+      } else {
+        isUserIdOrPasswordIncorrect = true;
       }
     } catch (ex) {
       print(ex);

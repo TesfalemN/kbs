@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kbs_css/Keys.dart';
@@ -13,10 +14,34 @@ class CoursePageController extends GetxController {
   TextEditingController courseCreditTextEditingController =
       TextEditingController();
 
+  TextEditingController updateCourseNameTextEditingController =
+      TextEditingController();
+  TextEditingController updateCourCodeTextEditingController =
+      TextEditingController();
+  TextEditingController updateCourseCreditTextEditingController =
+      TextEditingController();
+
+  Stream<QuerySnapshot> coursesStream =
+      FirebaseFirestore.instance.collection(Keys.courses).snapshots();
+
   bool _isLoading = false;
   bool get isLoading => _isLoading;
   set isLoading(bool value) {
     _isLoading = value;
+    update();
+  }
+
+  bool _isUpdateLoading = false;
+  bool get isUpdateLoading => _isUpdateLoading;
+  set isUpdateLoading(bool value) {
+    _isUpdateLoading = value;
+    update();
+  }
+
+  bool _isDeleteLoading = false;
+  bool get isDeleteLoading => _isDeleteLoading;
+  set isDeleteLoading(bool value) {
+    _isDeleteLoading = value;
     update();
   }
 
@@ -33,5 +58,42 @@ class CoursePageController extends GetxController {
       return false;
     }
     return false;
+  }
+
+  Future<bool> updateCourse(String? id) async {
+    try {
+      await Firestore.firestore?.collection(Keys.courses).doc(id).update(
+            (Courses()
+                  ..courseCode = updateCourCodeTextEditingController.text
+                  ..coursesName = updateCourseNameTextEditingController.text
+                  ..courseCredit = updateCourseCreditTextEditingController.text)
+                .toJson(),
+          );
+    } catch (ex) {
+      return false;
+    }
+    return false;
+  }
+
+  Future<bool> deleteCourse(String? id) async {
+    try {
+      await Firestore.firestore?.collection(Keys.courses).doc(id).delete();
+    } catch (ex) {
+      return false;
+    }
+    return false;
+  }
+
+  Future<void> flitterResult(String value) async {
+    try {
+      var result = await Firestore.firestore
+          ?.collection(Keys.login)
+          .where('courseCode', isGreaterThanOrEqualTo: value)
+          .where(
+            'coursesName',
+            isGreaterThanOrEqualTo: value,
+          )
+          .get();
+    } catch (ex) {}
   }
 }
