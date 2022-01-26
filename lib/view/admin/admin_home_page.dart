@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kbs_css/Keys.dart';
 import 'package:kbs_css/controller/admin/admin_home_page_controller.dart';
 import 'package:kbs_css/view/admin/Instructor_page.dart';
 import 'package:kbs_css/view/admin/add_class_page.dart';
@@ -17,7 +18,7 @@ class AdminHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var adminHomeController = Get.put(AdminHomeController());
-    adminHomeController.homePageWidget = mainBody();
+    adminHomeController.homePageWidget = mainBody(adminHomeController);
     return GetBuilder<AdminHomeController>(
       builder: (controller) => Scaffold(
         appBar: AppBar(
@@ -56,7 +57,8 @@ class AdminHomePage extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                                controller.homePageWidget = mainBody();
+                                controller.homePageWidget =
+                                    mainBody(controller);
                                 controller.update();
                               },
                               child: Container(
@@ -786,7 +788,7 @@ class AdminHomePage extends StatelessWidget {
     );
   }
 
-  Widget mainBody() {
+  Widget mainBody(AdminHomeController controller) {
     try {
       return Container(
         padding: const EdgeInsets.symmetric(
@@ -949,7 +951,24 @@ class AdminHomePage extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  MaterialButton(
+                    onPressed: () async {
+                      await controller.generateSchedule();
+                    },
+                    color: Keys.primaryColor,
+                    height: 50,
+                    minWidth: 100,
+                    child: const Text(
+                      'Generate Schedule',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             )

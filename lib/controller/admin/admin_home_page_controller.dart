@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:kbs_css/Keys.dart';
+import 'package:kbs_css/helper/firestore.dart';
 
 class AdminHomeController extends GetxController {
   bool _isSideMenuOpen = true;
@@ -49,5 +51,22 @@ class AdminHomeController extends GetxController {
   set studentDrawer(bool value) {
     _studentDrawer = value;
     update();
+  }
+
+  Future<void> generateSchedule() async {
+    try {
+      var departments =
+          await Firestore.firestore?.collection(Keys.department).get();
+      var courses = await Firestore.firestore?.collection(Keys.courses).get();
+      var classes = await Firestore.firestore?.collection(Keys.classes).get();
+      var instructors =
+          await Firestore.firestore?.collection(Keys.instructor).get();
+
+      if (departments != null) {
+        for (var element in departments.docs) {
+          //element[]
+        }
+      }
+    } catch (ex) {}
   }
 }

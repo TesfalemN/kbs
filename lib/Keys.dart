@@ -9,4 +9,8 @@ class Keys {
   static const String department = "department";
   static const String instructor = "instructor";
   static const String login = "login";
+  static const String student = "Student";
+
+  //Cache Key
+  static const String loginUser = "loginUser";
 }

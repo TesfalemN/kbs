@@ -49,6 +49,12 @@ class AddInstructorPage extends StatelessWidget {
                         isDense: true,
                         labelText: 'Instructor Id',
                         border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.badge_outlined,
+                        ),
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       validator: (value) {
                         return value == null
@@ -92,6 +98,12 @@ class AddInstructorPage extends StatelessWidget {
                           isDense: true,
                           labelText: 'Instructor Prefix',
                           border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            Icons.person_outline_outlined,
+                          ),
+                          labelStyle: TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                         validator: (value) {
                           return value == null
@@ -117,6 +129,12 @@ class AddInstructorPage extends StatelessWidget {
                         isDense: true,
                         labelText: 'Instructor First Name',
                         border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.person_outline_outlined,
+                        ),
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       validator: (value) {
                         return value == null
@@ -141,6 +159,12 @@ class AddInstructorPage extends StatelessWidget {
                         isDense: true,
                         labelText: 'Instructor Last Name',
                         border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.person_outline_outlined,
+                        ),
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       validator: (value) {
                         return value == null
@@ -154,56 +178,6 @@ class AddInstructorPage extends StatelessWidget {
                           controller.formKey.currentState!.validate();
                         }
                       },
-                    ),
-                    Center(
-                      child: PopupMenuButton(
-                        child: const Text("Radio PopupMenuButton"),
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Radio(
-                                  activeColor: Colors.pink,
-                                  groupValue: 1,
-                                  onChanged: (i) {},
-                                  value: 1,
-                                ),
-                                const Text("Android"),
-                              ],
-                            ),
-                          ),
-                          PopupMenuItem(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Radio(
-                                  groupValue: 1,
-                                  onChanged: (i) {},
-                                  value: 1,
-                                ),
-                                const Text("Flutter"),
-                              ],
-                            ),
-                          ),
-                          PopupMenuItem(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Radio(
-                                  groupValue: 1,
-                                  onChanged: (i) {},
-                                  value: 1,
-                                ),
-                                const Text("Dart"),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
                     const SizedBox(
                       height: 25,
@@ -243,7 +217,7 @@ class AddInstructorPage extends StatelessWidget {
                             radius: 15,
                           )
                         : MaterialButton(
-                            color: Colors.teal,
+                            color: Keys.primaryColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 4,

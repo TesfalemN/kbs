@@ -15,11 +15,32 @@ class DepartmentController extends GetxController {
     update();
   }
 
+  bool _isUpdateLoading = false;
+  bool get isUpdateLoading => _isUpdateLoading;
+  set isUpdateLoading(bool value) {
+    _isUpdateLoading = value;
+    update();
+  }
+
+  bool _isDeleteLoading = false;
+  bool get isDeleteLoading => _isDeleteLoading;
+  set isDeleteLoading(bool value) {
+    _isDeleteLoading = value;
+    update();
+  }
+
   TextEditingController departmentNameTextEditingController =
       TextEditingController();
   TextEditingController departmentCodeTextEditingController =
       TextEditingController();
   TextEditingController departmentYearTextEditingController =
+      TextEditingController();
+
+  TextEditingController updateDepartmentNameTextEditingController =
+      TextEditingController();
+  TextEditingController updateDepartmentCodeTextEditingController =
+      TextEditingController();
+  TextEditingController updateDepartmentYearTextEditingController =
       TextEditingController();
   List<String?>? departmentCourse;
 
@@ -30,9 +51,35 @@ class DepartmentController extends GetxController {
           (Department()
                 ..departmentCode = departmentCodeTextEditingController.text
                 ..departmentName = departmentNameTextEditingController.text
-                ..departmentYear = departmentYearTextEditingController.text
-                ..departmentCourseCodes = departmentCourse)
+                ..departmentYear = departmentYearTextEditingController.text)
               .toJson());
+    } catch (ex) {
+      return false;
+    }
+    return false;
+  }
+
+  Future<bool> updateCourse(String? id) async {
+    try {
+      await Firestore.firestore?.collection(Keys.department).doc(id).update(
+            (Department()
+                  ..departmentCode =
+                      updateDepartmentCodeTextEditingController.text
+                  ..departmentName =
+                      updateDepartmentNameTextEditingController.text
+                  ..departmentYear =
+                      updateDepartmentYearTextEditingController.text)
+                .toJson(),
+          );
+    } catch (ex) {
+      return false;
+    }
+    return false;
+  }
+
+  Future<bool> deleteCourse(String? id) async {
+    try {
+      await Firestore.firestore?.collection(Keys.department).doc(id).delete();
     } catch (ex) {
       return false;
     }

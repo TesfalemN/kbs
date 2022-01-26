@@ -26,30 +26,17 @@ class ClassRoomPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'View Class Rooms',
-              style: GoogleFonts.kanit(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
             const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  width: 250,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      isDense: true,
-                      labelText: 'Search',
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                    ),
+                Text(
+                  'View Class Rooms',
+                  style: GoogleFonts.kanit(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 MaterialButton(

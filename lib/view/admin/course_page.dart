@@ -22,30 +22,17 @@ class CoursesPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'View Courses',
-              style: GoogleFonts.kanit(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
             const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  width: 250,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      isDense: true,
-                      labelText: 'Search',
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                    ),
+                Text(
+                  'View Courses',
+                  style: GoogleFonts.kanit(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 MaterialButton(
@@ -616,51 +603,58 @@ class CoursesPage extends StatelessWidget {
                                                       const SizedBox(
                                                         width: 5,
                                                       ),
-                                                   controller.isDeleteLoading ? const SizedBox(
-                                                     width: 400,
-                                                     child:
-                                                     CupertinoActivityIndicator(
-                                                       radius: 15,
-                                                     ),
-                                                   ):   Expanded(
-                                                        child: MaterialButton(
-                                                          child: const Text(
-                                                            'Delete',
-                                                            style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 16,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                            ),
-                                                          ),
-                                                          color: Colors.red,
-                                                          onPressed: () async {
-                                                            controller
-                                                                    .isDeleteLoading =
-                                                                true;
-                                                            await controller
-                                                                .deleteCourse(
-                                                                    snapshot
-                                                                        .data
-                                                                        ?.docs[
-                                                                            index]
-                                                                        .id);
-                                                            Get.back();
+                                                      controller.isDeleteLoading
+                                                          ? const SizedBox(
+                                                              width: 400,
+                                                              child:
+                                                                  CupertinoActivityIndicator(
+                                                                radius: 15,
+                                                              ),
+                                                            )
+                                                          : Expanded(
+                                                              child:
+                                                                  MaterialButton(
+                                                                child:
+                                                                    const Text(
+                                                                  'Delete',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        16,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                ),
+                                                                color:
+                                                                    Colors.red,
+                                                                onPressed:
+                                                                    () async {
+                                                                  controller
+                                                                          .isDeleteLoading =
+                                                                      true;
+                                                                  await controller
+                                                                      .deleteCourse(snapshot
+                                                                          .data
+                                                                          ?.docs[
+                                                                              index]
+                                                                          .id);
+                                                                  Get.back();
 
-                                                            Get.snackbar(
-                                                              'Success',
-                                                              'Course Deleted Successfully',
-                                                            );
-                                                            controller
-                                                                    .isDeleteLoading =
-                                                                false;
-                                                          },
-                                                          height: 50,
-                                                          minWidth: 100,
-                                                        ),
-                                                      ),
+                                                                  Get.snackbar(
+                                                                    'Success',
+                                                                    'Course Deleted Successfully',
+                                                                  );
+                                                                  controller
+                                                                          .isDeleteLoading =
+                                                                      false;
+                                                                },
+                                                                height: 50,
+                                                                minWidth: 100,
+                                                              ),
+                                                            ),
                                                     ],
                                                   ),
                                                 ],

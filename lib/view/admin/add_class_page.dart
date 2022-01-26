@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kbs_css/Keys.dart';
 import 'package:kbs_css/controller/admin/classes_page_controller.dart';
 
 class AddClassPage extends StatelessWidget {
@@ -50,6 +51,12 @@ class AddClassPage extends StatelessWidget {
                         isDense: true,
                         labelText: 'Class Room Number',
                         border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.meeting_room_outlined,
+                        ),
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       onChanged: (value) {
                         if (controller.isFormValidated) {
@@ -73,6 +80,12 @@ class AddClassPage extends StatelessWidget {
                         isDense: true,
                         labelText: 'Class Room Name',
                         border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.maps_home_work_outlined,
+                        ),
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       onChanged: (value) {
                         if (controller.isFormValidated) {
@@ -96,6 +109,12 @@ class AddClassPage extends StatelessWidget {
                         isDense: true,
                         labelText: 'Block Number',
                         border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.domain_outlined,
+                        ),
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       onChanged: (value) {
                         if (controller.isFormValidated) {
@@ -114,7 +133,7 @@ class AddClassPage extends StatelessWidget {
                             radius: 15,
                           )
                         : MaterialButton(
-                            color: Colors.teal,
+                            color: Keys.primaryColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 4,
@@ -149,7 +168,7 @@ class AddClassPage extends StatelessWidget {
                                   color: Colors.white,
                                 ),
                                 SizedBox(
-                                  width: 5,
+                                  width: 10,
                                 ),
                                 Text(
                                   'Add Class Room',
