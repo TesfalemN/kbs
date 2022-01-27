@@ -12,7 +12,8 @@ class Instructor {
     ..instructorPrefix = json["instructorPrefix"] as String?
     ..instructorFirstName = json["instructorFirstName"] as String?
     ..instructorLastName = json["instructorLastName"] as String?
-    ..instructorCourseCodes = json["instructorCourseCodes"] as List<String?>?;
+    ..instructorCourseCodes =
+        List<String>.from(json["instructorCourseCodes"] as List<dynamic>);
 
   Map<String, dynamic> toJson() => {
         "instructorId": instructorId,

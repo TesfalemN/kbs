@@ -24,6 +24,9 @@ class CoursePageController extends GetxController {
   Stream<QuerySnapshot> coursesStream =
       FirebaseFirestore.instance.collection(Keys.courses).snapshots();
 
+  final Stream<QuerySnapshot> departmentStream =
+      FirebaseFirestore.instance.collection(Keys.department).snapshots();
+
   bool _isLoading = false;
   bool get isLoading => _isLoading;
   set isLoading(bool value) {
@@ -45,6 +48,8 @@ class CoursePageController extends GetxController {
     update();
   }
 
+  List<String>? departmentCode;
+
   Future<bool> addCourse() async {
     try {
       await Firestore.setObject(
@@ -52,7 +57,8 @@ class CoursePageController extends GetxController {
           (Courses()
                 ..courseCode = courCodeTextEditingController.text
                 ..coursesName = courseNameTextEditingController.text
-                ..courseCredit = courseCreditTextEditingController.text)
+                ..courseCredit = courseCreditTextEditingController.text
+                ..departmentCodes = departmentCode)
               .toJson());
     } catch (ex) {
       return false;

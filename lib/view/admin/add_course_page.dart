@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kbs_css/Keys.dart';
 import 'package:kbs_css/controller/admin/course_page_controller.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class AddCoursePage extends StatelessWidget {
   @override
@@ -123,6 +125,36 @@ class AddCoursePage extends StatelessWidget {
                               if (controller.isFormValidated) {
                                 controller.formKey.currentState!.validate();
                               }
+                            },
+                          ),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          StreamBuilder<QuerySnapshot>(
+                            stream: controller.departmentStream,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasError) {
+                                return const Text('Loading');
+                              }
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Text('Loading');
+                              }
+                              return MultiSelectDialogField(
+                                items: (snapshot.data?.docs as List<dynamic>)
+                                    .map(
+                                      (e) => MultiSelectItem<String?>(
+                                        e['departmentCode'],
+                                        e['departmentName'],
+                                      ),
+                                    )
+                                    .toList(),
+                                listType: MultiSelectListType.LIST,
+                                onConfirm: (values) {
+                                  controller.departmentCode =
+                                      values as List<String>?;
+                                },
+                              );
                             },
                           ),
                           const SizedBox(

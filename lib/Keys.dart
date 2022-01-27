@@ -10,6 +10,7 @@ class Keys {
   static const String instructor = "instructor";
   static const String login = "login";
   static const String student = "Student";
+  static const String schedules = "schedules";
 
   //Cache Key
   static const String loginUser = "loginUser";
